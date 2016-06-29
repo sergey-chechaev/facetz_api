@@ -1,5 +1,11 @@
+require 'faraday'
+require 'faraday_middleware'
+require 'faraday_middleware/multi_json'
+
 require "facetz_api/version"
 require "facetz_api/configuration"
+require "facetz_api/api"
+require "facetz_api/client"
 
 module FacetzApi
   class << self
