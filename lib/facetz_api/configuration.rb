@@ -8,7 +8,11 @@ module FacetzApi
       @key = nil
       @ids = []
       @tids = []
-      @version = "v1"
+      @version = "v1/"
+    end
+
+    def version=(param)
+      [param,"/"].join("")
     end
   end
 end

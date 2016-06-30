@@ -1,15 +1,19 @@
 module FacetzApi
   class Client
+    attr_reader :conn
+
     def initialize
       @conn = FacetzApi::API.call
     end
 
     def lookup(ids: [], tids: {})
-      @conn.post do |req|
-        req.url = FacetzApi.configuration.version
+      response = @conn.post do |req|
+        req.url FacetzApi.configuration.version
         req.headers['Content-Type'] = 'application/json'
-        req.body = body(ids: ids, tids: tids)
+        req.body = body(ids: ids).to_json
       end
+
+      pars_response(response.body)
     end
 
     def body(ids: [], tids: {})
@@ -17,8 +21,11 @@ module FacetzApi
         user: FacetzApi.configuration.user,
         key: FacetzApi.configuration.key,
         ids: ids,
-        tids: tids
       }
+    end
+
+    def pars_response(body)
+      JSON.parse(body) unless body.empty?
     end
   end
 end

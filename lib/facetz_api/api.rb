@@ -10,10 +10,8 @@ module FacetzApi
 
       def connection(url: )
         Faraday.new(url) do |builder|
-          builder.request  :url_encoded
-          builder.response :logger
-          builder.adapter  Faraday.default_adapter
-          builder.response :multi_json, preserve_raw: true
+          builder.request :url_encoded  # for POST/PUT params
+          builder.adapter :net_http
         end
       end
 
