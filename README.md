@@ -32,6 +32,7 @@ Configure gem credentials
 Make request
 
 ```ruby
+  conn = FacetzApi::Client.new
   result = conn.lookup(ids: ["3134ac45-d165-43c9-83c6-bc8f79202348"])
 ```
 
