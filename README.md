@@ -22,7 +22,20 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Configure gem credentials 
+
+```ruby
+ FacetzApi.configure do |config|
+    config.user = ENV['FACETZ_USER']
+    config.key = ENV['FACETZ_KEY']
+    config.version = "v1"
+ end
+```
+Make request
+
+```ruby
+  result = conn.lookup(ids: ["3134ac45-d165-43c9-83c6-bc8f79202348"])
+```
 
 ## Development
 
